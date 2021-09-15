@@ -86,7 +86,7 @@ let imgs = ["./assets/images/polaroid.png","./assets/images/tv.png","./assets/im
 
 let image = document.createElement("img");
 image.style.width = "150px";
-image.style.marginTop = "30px";
+image.style.margin = "70px 10px 0 0";
 image.style.display = "flex";
 image.style.justifyContent = "center";
 imageDiv.append(image);
@@ -207,7 +207,7 @@ radioDiv.append(labelTwo);
 
 let blobImg = document.createElement("img");
 blobImg.style.position = "absolute";
-blobImg.style.width = "250px";
+blobImg.style.width = "300px";
 blobImg.style.top = "20%";
 blobImg.style.left = "25%";
 blobImg.style.zIndex = "-1";
@@ -227,9 +227,9 @@ radioTwo.addEventListener("change", displayBlobOrNot);
 
 let capture = document.createElement("img");
 capture.src = "./assets/images/camera.png";
-capture.style.width = "50px";
-capture.style.display = "block";
-capture.style.marginTop = "20px";
+capture.style.width = "3rem";
+capture.style.backgroundColor = "inherit";
+capture.style.margin = "10px 0 0 20px";
 capture.style.border = "2px solid #383838";
 capture.style.padding = "10px";
 capture.style.borderRadius = "10px";
@@ -260,8 +260,8 @@ let showCard = (e) => {
     cardImg.style.width = "150px";
     cardImg.style.height = "150px";
     cardImg.style.position = "absolute";
-    cardImg.style.top = "35%";
-    cardImg.style.left = "20%";
+    cardImg.style.top = "30%";
+    cardImg.style.left = "25%";
 
     let deleteCard = () => {
         cardDiv.style.display = "none";
@@ -308,12 +308,12 @@ let showCard = (e) => {
     cardDiv.style.width = "300px";
     cardDiv.style.marginTop = "40px";
     cardDiv.style.marginRight = "50px";
-    cardDiv.style.backgroundColor = pageColor;
+    //cardDiv.style.backgroundColor = pageColor;
     cardDiv.append(cardImg);
     prev.append(cardDiv);
 }
 
-let textStyles = document.getElementsByClassName("inputName");
+//let textStyles = document.getElementsByClassName("inputName");
 
 capture.onclick = showCard;
 
