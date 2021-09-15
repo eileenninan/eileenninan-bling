@@ -4,21 +4,24 @@ Your code goes in this file
 --------------------------------------------------------------
 */
 let root = document.querySelector("#root");
+root.style.fontFamily = "Montserrat";
+root.style.height = "100vh";
 
-root.style.cssText="font-family: 'Montserrat', sans-serif;"
+let body = document.getElementsByTagName("BODY")[0];
+body.style.backgroundColor = "gold";
 
-const heading = document.createElement("h1");
+let heading = document.createElement("h1");
 heading.innerText = "BLING!";
-heading.style.textAlign = "center";
-heading.style.fontWeight = "bolder";
-heading.style.fontSize = "35px";
-heading.style.padding = "1em";
-heading.style.color = "#2d2d2d";
-heading.style.textShadow = "4.9px 4.9px #f39c12";
-root.appendChild(heading);
+heading.style.display = "flex";
+heading.style.justifyContent = "center";
+heading.style.fontWeight = "900";
+heading.style.fontSize = "2em";
+heading.style.margin = "30px";
+heading.style.textShadow = "3px 3px #f39c12";
+root.append(heading);
 
 
-const main = document.createElement("div");
+let main = document.createElement("div");
 main.style.margin = "50px";
 main.style.display = "flex";
 root.appendChild(main);
@@ -29,21 +32,54 @@ const changeColor = (e) => {
     pageColor = e.taget.value;
 }
 
-const left = document.createElement("div");
+let left = document.createElement("div");
 left.style.width = "60%";
 left.style.paddileLeft = "100px";
 left.style.paddingTop = "30px";
 main.append(left);
 
-const firstText = document.createElement("p");
+let firstText = document.createElement("p");
 firstText.innerText = "Sizzle your Life";
 firstText.style.fontSize = "30px";
 firstText.style.fontWeight = "10%";
 left.append(firstText);
 
-const secondText = document.createElement("p");
+let secondText = document.createElement("p");
 secondText.innerText = "Make a Card";
 secondText.style.marginTop = "20px";
 secondText.style.fontSize = "60px";
 secondText.style.fontWeight = "bold";
 left.append(secondText);
+
+let footerEle = ["♥Credits:","Polaroid","TV","Traitor","Fall-Guy","Radio"];
+let footer = document.createElement('footer');
+footer.style.justifyContent = "center"
+footer.style.wordSpacing = '0.5rem';
+footer.style.flexWrap = "wrap";
+footer.style.display = "flex";
+footer.style.bottom= "0";
+footer.style.width = "100%";
+footer.style.marginTop = "200px";
+footer.style.fontWeight = "bold";
+footerEle.forEach((items,index)=>{
+    if(index == 0){
+     a = document.createElement("p");
+    }
+    else{
+     a = document.createElement("a");
+        a.addEventListener('mouseover',(e)=>{
+            e.target.style.borderBottom = "2px solid black";
+        })
+        a.addEventListener('mouseout',(e)=>{
+            e.target.style.borderBottom = "0px";
+        })
+        a.href = "#";
+        a.target = "_blank";
+        a.style.textDecoration = "none";
+        a.style.color = "black";
+        a.style.marginLeft = "1em";
+    }
+    a.innerText = items;
+    footer.appendChild(a);
+})
+root.append(footer);
