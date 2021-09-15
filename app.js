@@ -24,7 +24,7 @@ root.append(heading);
 let main = document.createElement("div");
 main.style.margin = "50px";
 main.style.display = "flex";
-root.appendChild(main);
+root.append(main);
 
 let pageColor = "";
 const changeColor = (e) => {
@@ -66,7 +66,7 @@ rightText.style.fontSize = "60px";
 rightText.style.fontWeight = "900";
 rightText.style.textAlign = "center";
 rightText.style.color = "#383838";
-reightText.style.textShadw = "2px 2px 2px #383838";
+rightText.style.textShadow = "2px 2px 2px #383838";
 right.append(rightText);
 
 let BlingName = "";
@@ -145,6 +145,9 @@ input.onclick = () => {
     input.stylr.outline = "none";
 }
 selectionDiv.append(input);
+
+input.addEventListener("input", showName);
+
 
 
 let footerEle = ["♥Credits:","Polaroid","TV","Traitor","Fall-Guy","Radio"];
