@@ -7,7 +7,7 @@ let root = document.querySelector("#root");
 root.style.fontFamily = "Montserrat";
 root.style.height = "100vh";
 
-let body = document.querySelector("body");
+let body = document.getElementsByTagName("body")[0];
 body.style.backgroundColor = "gold";
 
 let heading = document.createElement("h1");
@@ -17,17 +17,18 @@ heading.style.justifyContent = "center";
 heading.style.fontWeight = "900";
 heading.style.fontSize = "2em";
 heading.style.margin = "30px";
-heading.style.textShadow = "3px 3px #f39c12";
+heading.style.textShadow = "3px 3px rgb(230, 158, 5)";
 root.append(heading);
 
 
 let main = document.createElement("div");
 main.style.margin = "50px";
 main.style.display = "flex";
+main.style.flexWrap = "wrap";
 root.append(main);
 
-let pageColor = "";
-const changeColor = (e) => {
+let pageColor = "gold";
+let changeColor = (e) => {
     body.style.backgroundColor = e.target.value;
     pageColor = e.taget.value;
 }
@@ -122,6 +123,9 @@ buttons.forEach((button,i) => {
     btn.style.borderRadius = "10px";
     btn.style.backgroundColor = "transparent";
     btn.style.boxShadow = "3px 3px 5px";
+    btn.onmouseover = () => {
+        btn.style.cursor = "pointer";
+    }
     btn.addEventListener("click", showImg);
     btn.style.border = "2px solid #383838";
     buttonDiv.append(btn);
@@ -228,12 +232,15 @@ radioTwo.addEventListener("change", displayBlobOrNot);
 let capture = document.createElement("img");
 capture.src = "./assets/images/camera.png";
 capture.style.width = "3rem";
-capture.style.backgroundColor = "inherit";
+capture.style.display = "block";
 capture.style.margin = "10px 0 0 20px";
 capture.style.border = "2px solid #383838";
 capture.style.padding = "10px";
 capture.style.borderRadius = "10px";
 capture.style.boxShadow = "3px 3px 5px";
+capture.onmouseover = () => {
+    capture.style.cursor = "pointer";
+}
 left.append(capture);
 
 let prev = document.createElement("div");
@@ -249,6 +256,7 @@ root.append(prev);
 
 let showCard = (e) => {
     let cardDiv = document.createElement("div");
+    cardDivOut = cardDiv;
     cardDiv.style.position = "relative";
     let cardImg = document.createElement("img");
     if(temp!=""){
@@ -308,12 +316,12 @@ let showCard = (e) => {
     cardDiv.style.width = "300px";
     cardDiv.style.marginTop = "40px";
     cardDiv.style.marginRight = "50px";
-    //cardDiv.style.backgroundColor = pageColor;
+    cardDiv.style.backgroundColor = pageColor;
     cardDiv.append(cardImg);
     prev.append(cardDiv);
 }
 
-//let textStyles = document.getElementsByClassName("inputName");
+let textStyles = document.getElementsByClassName("inputName");
 
 capture.onclick = showCard;
 
