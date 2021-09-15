@@ -212,7 +212,7 @@ right.append(blobImg);
 
 let displayBlobOrNot = (e) => {
     if (e.target.id == "blob"){
-        blobImg.src = "assests/images/blob.png";
+        blobImg.src = "assets/images/blob.png";
     }
     else{
         blobImg.src = "";
