@@ -148,6 +148,25 @@ selectionDiv.append(input);
 
 input.addEventListener("input", showName);
 
+let colors = ["Gold","Snow","DodgerBlue","LightSalmon","LightCoral","LightPink","OrangeRed","Tomato","DarkOrchid","SpringGreen","Thistle"];
+
+let colorSelector = document.createElement("select");
+colorSelector.className += "inputs";
+colorSelector.style.display = "inline-block";
+colorSelector.style.marginRight = "20px";
+
+colorSelector.onclick = () => {
+    colorSelector.style.outline = "none";
+}
+colors.forEach (color => {
+    let option = document.createElement("option");
+    option.value = color;
+    option.innerText = color;
+    colorSelector.addEventListener("change", changeColor);
+    colorSelector.append(option);
+})
+selectionDiv.append(colorSelector);
+
 
 
 let footerEle = ["♥Credits:","Polaroid","TV","Traitor","Fall-Guy","Radio"];
