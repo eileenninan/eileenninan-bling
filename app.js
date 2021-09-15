@@ -30,6 +30,11 @@ const changeColor = (e) => {
 }
 
 const left = document.createElement("div");
+left.style.width = "60%";
+left.style.paddileLeft = "100px";
+left.style.paddingTop = "30px";
+main.append(left);
+
 const firstText = document.createElement("p");
 firstText.innerText = "Sizzle your Life";
 firstText.style.fontSize = "30px";
@@ -42,9 +47,3 @@ secondText.style.marginTop = "20px";
 secondText.style.fontSize = "60px";
 secondText.style.fontWeight = "bold";
 left.append(secondText);
-
-left.style.width = "60%";
-left.style.paddileLeft = "100px";
-left.style.paddingTop = "30px";
-
-main.append(left);
