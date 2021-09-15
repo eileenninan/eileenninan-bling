@@ -167,6 +167,60 @@ colors.forEach (color => {
 })
 selectionDiv.append(colorSelector);
 
+let radioDiv = document.createElement("div");
+radioDiv.className += "inputs";
+radioDiv.style.display = "inline-block";
+radioDiv.style.padding = "10px";
+selectionDiv.append(radioDiv);
+
+let choices = document.getElementsByClassName("inputs");
+for(let choice of choices){
+    choice.style.border = "1px solid #383838";
+    choice.style.boxShadow = "3px 3px 5px #383838";
+    choice.style.borderRadius = "10px";
+    choice.style.backgroundColor = "#383838";
+    choice.style.color = "white";
+}
+
+const radioOne = document.createElement("input");
+radioOne.name = "Blob or Not";
+radioOne.type = "radio";
+radioOne.id = "blob";
+radioDiv.append(radioOne);
+
+let labelOne = document.createElement("label");
+labelOne.innerText = "Blob";
+radioDiv.append(labelOne);
+
+const radioTwo = document.createElement("input");
+radioTwo.name = "Blob or Not";
+radioTwo.type = "radio";
+radioTwo.id = "nope";
+radioDiv.append(radioTwo);
+
+let labelTwo = document.createElement("label");
+labelTwo.innerText = "Nope";
+radioDiv.append(labelTwo);
+
+let blobImg = document.createElement("img");
+blobImg.style.position = "absolute";
+blobImg.style.width = "250px";
+blobImg.style.top = "20%";
+blobImg.style.left = "25%";
+blobImg.style.zIndex = "-1";
+right.append(blobImg);
+
+let displayBlobOrNot = (e) => {
+    if (e.target.id == "blob"){
+        blobImg.src = "assests/images/blob.png";
+    }
+    else{
+        blobImg.src = "";
+    }
+}
+
+radioOne.addEventListener("change", displayBlobOrNot);
+radioTwo.addEventListener("change", displayBlobOrNot);
 
 
 let footerEle = ["♥Credits:","Polaroid","TV","Traitor","Fall-Guy","Radio"];
