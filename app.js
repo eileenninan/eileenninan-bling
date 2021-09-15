@@ -315,7 +315,7 @@ let showCard = (e) => {
 
 let textStyles = document.getElementsByClassName("inputName");
 
-cameraImg.onclick = showCard;
+capture.onclick = showCard;
 
 
 let footerEle = ["♥Credits:","Polaroid","TV","Traitor","Fall-Guy","Radio"];
