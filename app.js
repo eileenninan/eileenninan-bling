@@ -51,6 +51,102 @@ secondText.style.fontSize = "60px";
 secondText.style.fontWeight = "bold";
 left.append(secondText);
 
+let right = document.createElement("div");
+right.style.width = "40%";
+right.style.position = "relative";
+right.style.display = "flex";
+main.append(right);
+
+let rightText = document.createElement("div");
+rightText.className = "inputName";
+rightText.style.position = "absolute";
+rightText.style.width = "100%";
+rightText.style.top = "0px";
+rightText.style.fontSize = "60px";
+rightText.style.fontWeight = "900";
+rightText.style.textAlign = "center";
+rightText.style.color = "#383838";
+reightText.style.textShadw = "2px 2px 2px #383838";
+right.append(rightText);
+
+let BlingName = "";
+const showName = (e) => {
+    rightText.textContent = e.target.value;
+    BlingName = e.target.value;
+}
+
+let imageDiv = document.createElement("div");
+imageDiv.style.margin = "50px";
+imageDiv.style.position = "absolute";
+imageDiv.style.transform = "translateX(130%) translateY(20%)"
+imageDiv.style.zIndex = "2";
+right.append(imageDiv);
+
+let imgs = ["assets/images/polaroid.png","assets/images/tv.png","assets/images/among-us.png","assets/images/fall-guy-01.png","assets/images/radio-02.png"];
+
+let image = document.createElement("img");
+image.style.width = "150px";
+image.style.margin = "30px";
+image.style.display = "flex";
+image.style.justifyContent = "center";
+imageDiv.append(image);
+
+let temp = "";
+let active = "active";
+let showImg = (e) => {
+    image.src = e.target.img;
+    temp = e.target.img;
+    if (active != "active"){
+        active.style.backgroundColor = "transparent";
+        active.style.color = "black";
+    }
+    active = e.target;
+    e.target.style.backgroundColor = "#383838";
+    e.target.style.color = "white";
+    e.target.style.boxShadow = "3px 3px 5px #383838";
+}
+
+let buttonDiv = document.createElement("div");
+buttonDiv.style.display = "flex";
+buttonDiv.style.flexWrap = "wrap";
+left.append(buttonDiv);
+
+let buttons = ["Polaroid","TV","Traitor","Fall Guy","Radio"];
+buttons.forEach((button,i) =>{
+    let btn = document.createElement("button");
+    btn.innerText = button;
+    btn.img = imgs[i];
+    btn.style.padding = "10px";
+    btn.style.marginTop = "50px";
+    btn.style.marginRight = "20px";
+    btn.style.backgroundColor = "transparent";
+    btn.style.boxShadow = "3px 3px 5px";
+    btn.addEventListener("click", showImg);
+    btn.style.border = "2px solid #383838";
+    buttonDiv.append(btn);
+})
+
+let selectionDiv = document.createElement("div");
+selectionDiv.style.display = "flex";
+selectionDiv.style.marginTop = "30px";
+left.append(selectionDiv);
+
+let input = document.createElement("input");
+input.className += "inputs";
+input.type = "text";
+input.placeholder = "Name Your Bling!";
+input.style.display = "block";
+input.style.paddingLeft = "10px";
+input.style.height = "40px";
+input.style.width = "200px";
+input.style.marginRight = "20px";
+
+input.onclick = () => {
+    input.stylr.outline = "none";
+}
+selectionDiv.append(input);
+
+
 let footerEle = ["♥Credits:","Polaroid","TV","Traitor","Fall-Guy","Radio"];
 let footer = document.createElement('footer');
 footer.style.justifyContent = "center"
