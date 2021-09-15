@@ -7,7 +7,7 @@ let root = document.querySelector("#root");
 root.style.fontFamily = "Montserrat";
 root.style.height = "100vh";
 
-let body = document.getElementsByTagName("BODY")[0];
+let body = document.querySelector("body");
 body.style.backgroundColor = "gold";
 
 let heading = document.createElement("h1");
@@ -40,14 +40,14 @@ main.append(left);
 
 let firstText = document.createElement("p");
 firstText.innerText = "Sizzle your Life";
-firstText.style.fontSize = "30px";
+firstText.style.fontSize = "33px";
 firstText.style.fontWeight = "10%";
 left.append(firstText);
 
 let secondText = document.createElement("p");
 secondText.innerText = "Make a Card";
 secondText.style.marginTop = "20px";
-secondText.style.fontSize = "60px";
+secondText.style.fontSize = "65px";
 secondText.style.fontWeight = "bold";
 left.append(secondText);
 
@@ -76,17 +76,17 @@ const showName = (e) => {
 }
 
 let imageDiv = document.createElement("div");
-imageDiv.style.margin = "50px";
+imageDiv.style.marginTop = "50px";
 imageDiv.style.position = "absolute";
-imageDiv.style.transform = "translateX(130%) translateY(20%)"
+imageDiv.style.transform = "translateX(130%) translateY(20%)";
 imageDiv.style.zIndex = "2";
 right.append(imageDiv);
 
-let imgs = ["assets/images/polaroid.png","assets/images/tv.png","assets/images/among-us.png","assets/images/fall-guy-01.png","assets/images/radio-02.png"];
+let imgs = ["./assets/images/polaroid.png","./assets/images/tv.png","./assets/images/among-us.png","./assets/images/fall-guy-01.png","./assets/images/radio-02.png"];
 
 let image = document.createElement("img");
 image.style.width = "150px";
-image.style.margin = "30px";
+image.style.marginTop = "30px";
 image.style.display = "flex";
 image.style.justifyContent = "center";
 imageDiv.append(image);
@@ -112,13 +112,14 @@ buttonDiv.style.flexWrap = "wrap";
 left.append(buttonDiv);
 
 let buttons = ["Polaroid","TV","Traitor","Fall Guy","Radio"];
-buttons.forEach((button,i) =>{
+buttons.forEach((button,i) => {
     let btn = document.createElement("button");
     btn.innerText = button;
     btn.img = imgs[i];
     btn.style.padding = "10px";
     btn.style.marginTop = "50px";
     btn.style.marginRight = "20px";
+    btn.style.borderRadius = "10px";
     btn.style.backgroundColor = "transparent";
     btn.style.boxShadow = "3px 3px 5px";
     btn.addEventListener("click", showImg);
@@ -176,6 +177,8 @@ selectionDiv.append(radioDiv);
 let choices = document.getElementsByClassName("inputs");
 for(let choice of choices){
     choice.style.border = "1px solid #383838";
+    choice.style.margin = "10px";
+    choice.style.padding = "10px";
     choice.style.boxShadow = "3px 3px 5px #383838";
     choice.style.borderRadius = "10px";
     choice.style.backgroundColor = "#383838";
@@ -212,7 +215,7 @@ right.append(blobImg);
 
 let displayBlobOrNot = (e) => {
     if (e.target.id == "blob"){
-        blobImg.src = "assets/images/blob.png";
+        blobImg.src = "./assets/images/blob.png";
     }
     else{
         blobImg.src = "";
@@ -221,6 +224,98 @@ let displayBlobOrNot = (e) => {
 
 radioOne.addEventListener("change", displayBlobOrNot);
 radioTwo.addEventListener("change", displayBlobOrNot);
+
+let capture = document.createElement("img");
+capture.src = "./assets/images/camera.png";
+capture.style.width = "50px";
+capture.style.display = "block";
+capture.style.marginTop = "20px";
+capture.style.border = "2px solid #383838";
+capture.style.padding = "10px";
+capture.style.borderRadius = "10px";
+capture.style.boxShadow = "3px 3px 5px";
+left.append(capture);
+
+let prev = document.createElement("div");
+prev.className = "prev";
+prev.style.display = "flex";
+prev.style.flexDirection = "row";
+prev.style.justifyContent = "center";
+prev.style.flexWrap = "wrap";
+prev.style.marginTop = "50px";
+prev.style.paddingLeft = "100px";
+prev.style.paddingRight = "100px";
+root.append(prev);
+
+let showCard = (e) => {
+    let cardDiv = document.createElement("div");
+    cardDiv.style.position = "relative";
+    let cardImg = document.createElement("img");
+    if(temp!=""){
+        cardImg.src = temp;
+    }
+    else{
+        cardImg.style.display = "none";
+    }
+    cardImg.style.width = "150px";
+    cardImg.style.height = "150px";
+    cardImg.style.position = "absolute";
+    cardImg.style.top = "35%";
+    cardImg.style.left = "20%";
+
+    let deleteCard = () => {
+        cardDiv.style.display = "none";
+    }
+
+    let deleteIcon = document.createElement("img");
+    deleteIcon.src = "./assets/images/icon_delete.png";
+    deleteIcon.style.width = "35px";
+    deleteIcon.style.position = "absolute";
+    deleteIcon.style.top = "-15px";
+    deleteIcon.style.right = "-15px";
+    deleteIcon.style.position = "top-right";
+    deleteIcon.onclick = deleteCard;
+    cardDiv.append(deleteIcon);
+
+    if(radioOne.checked){
+        cardDiv.style.backgroundImage = "url('./assets/images/blob.png')";
+        cardDiv.style.backgroundSize = "300px";
+        cardDiv.style.backgroundPosition = "center";
+        cardDiv.style.backgroundRepeat = "no-repeat";
+    }
+    else{
+        cardDiv.style.backgroundImage = 'url("")';
+    }
+
+    let cardText = document.createElement("div");
+    cardText.className = "inputName";
+    cardText.style.fontSize = "40px";
+    cardText.style.marginTop = "10px";
+    cardText.style.fontWeight = "900";
+    cardText.style.textAlign = "center";
+    cardText.style.color = '#383838';
+    cardText.style.textShadow = "2px 2px  2px #383838";
+    cardText.textContent = BlingName;
+    cardDiv.append(cardText);
+
+    cardDiv.style.textAlign = "center";
+    cardDiv.style.flexDirection = "column";
+    cardDiv.style.border = "2px solid #383838";
+    cardDiv.style.boxShadow = "3px 3px 5px #383838";
+    cardDiv.style.justifyContent = "center";
+    cardDiv.style.alignItems = "center";
+    cardDiv.style.height = "400px";
+    cardDiv.style.width = "300px";
+    cardDiv.style.marginTop = "40px";
+    cardDiv.style.marginRight = "50px";
+    cardDiv.style.backgroundColor = pageColor;
+    cardDiv.append(cardImg);
+    prev.append(cardDiv);
+}
+
+let textStyles = document.getElementsByClassName("inputName");
+
+cameraImg.onclick = showCard;
 
 
 let footerEle = ["♥Credits:","Polaroid","TV","Traitor","Fall-Guy","Radio"];
