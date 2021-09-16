@@ -6,6 +6,7 @@ Your code goes in this file
 let root = document.querySelector("#root");
 root.style.fontFamily = "Montserrat";
 root.style.height = "100vh";
+root.style.width = "100%";
 
 let body = document.getElementsByTagName("body")[0];
 body.style.backgroundColor = "gold";
@@ -13,6 +14,8 @@ body.style.backgroundColor = "gold";
 let heading = document.createElement("h1");
 heading.innerText = "BLING!";
 heading.style.display = "flex";
+heading.style.flexWrap = "wrap";
+heading.style.rowGap = "1rem";
 heading.style.justifyContent = "center";
 heading.style.fontWeight = "900";
 heading.style.fontSize = "2em";
@@ -25,18 +28,23 @@ let main = document.createElement("div");
 main.style.margin = "50px";
 main.style.display = "flex";
 main.style.flexWrap = "wrap";
+main.style.rowGap = "1rem";
 root.append(main);
 
 let pageColor = "gold";
 let changeColor = (e) => {
     body.style.backgroundColor = e.target.value;
-    pageColor = e.taget.value;
+    pageColor = e.target.value;
 }
 
 let left = document.createElement("div");
 left.style.width = "60%";
 left.style.paddileLeft = "100px";
 left.style.paddingTop = "30px";
+left.style.display = "flex";
+left.style.flexWrap = "wrap";
+left.style.rowGap = "1rem";
+left.style.flexDirection = "column";
 main.append(left);
 
 let firstText = document.createElement("p");
@@ -56,6 +64,8 @@ let right = document.createElement("div");
 right.style.width = "40%";
 right.style.position = "relative";
 right.style.display = "flex";
+right.style.flexWrap = "wrap";
+right.style.rowGap = "1rem";
 main.append(right);
 
 let rightText = document.createElement("div");
@@ -77,18 +87,18 @@ const showName = (e) => {
 }
 
 let imageDiv = document.createElement("div");
-imageDiv.style.marginTop = "50px";
 imageDiv.style.position = "absolute";
-imageDiv.style.transform = "translateX(130%) translateY(20%)";
+imageDiv.style.top = "5px";
+imageDiv.style.left = "130px"
 imageDiv.style.zIndex = "2";
 right.append(imageDiv);
 
 let imgs = ["./assets/images/polaroid.png","./assets/images/tv.png","./assets/images/among-us.png","./assets/images/fall-guy-01.png","./assets/images/radio-02.png"];
 
 let image = document.createElement("img");
-image.style.width = "150px";
-image.style.margin = "70px 10px 0 0";
-image.style.display = "flex";
+image.style.width = "250px";
+image.style.margin = "70px 0 0 0";
+image.style.padding = "50px";
 image.style.justifyContent = "center";
 imageDiv.append(image);
 
@@ -110,6 +120,7 @@ let showImg = (e) => {
 let buttonDiv = document.createElement("div");
 buttonDiv.style.display = "flex";
 buttonDiv.style.flexWrap = "wrap";
+buttonDiv.style.rowGap = "1rem";
 left.append(buttonDiv);
 
 let buttons = ["Polaroid","TV","Traitor","Fall Guy","Radio"];
@@ -133,6 +144,7 @@ buttons.forEach((button,i) => {
 
 let selectionDiv = document.createElement("div");
 selectionDiv.style.display = "flex";
+selectionDiv.style.flexWrap = "wrap";
 selectionDiv.style.marginTop = "30px";
 left.append(selectionDiv);
 
@@ -140,14 +152,16 @@ let input = document.createElement("input");
 input.className += "inputs";
 input.type = "text";
 input.placeholder = "Name Your Bling!";
-input.style.display = "block";
+input.style.display = "flex";
+input.style.flexWrap = "wrap";
+input.style.rowGap = "1rem";
 input.style.paddingLeft = "10px";
 input.style.height = "40px";
 input.style.width = "200px";
 input.style.marginRight = "20px";
 
 input.onclick = () => {
-    input.stylr.outline = "none";
+    input.style.outline = "none";
 }
 selectionDiv.append(input);
 
@@ -157,7 +171,9 @@ let colors = ["Gold","Snow","DodgerBlue","LightSalmon","LightCoral","LightPink",
 
 let colorSelector = document.createElement("select");
 colorSelector.className += "inputs";
-colorSelector.style.display = "inline-block";
+colorSelector.style.display = "flex";
+colorSelector.style.flexWrap = "wrap";
+colorSelector.style.rowGap = "1rem";
 colorSelector.style.marginRight = "20px";
 
 colorSelector.onclick = () => {
@@ -174,7 +190,9 @@ selectionDiv.append(colorSelector);
 
 let radioDiv = document.createElement("div");
 radioDiv.className += "inputs";
-radioDiv.style.display = "inline-block";
+radioDiv.style.display = "flex";
+radioDiv.style.flexWrap = "wrap";
+radioDiv.style.rowGap = "1rem";
 radioDiv.style.padding = "10px";
 selectionDiv.append(radioDiv);
 
@@ -215,24 +233,34 @@ blobImg.style.width = "300px";
 blobImg.style.top = "20%";
 blobImg.style.left = "25%";
 blobImg.style.zIndex = "-1";
+blobImg.style.display = "flex";
+blobImg.style.flexWrap = "wrap";
+blobImg.style.rowGap = "1rem";
 right.append(blobImg);
 
 let displayBlobOrNot = (e) => {
     if (e.target.id == "blob"){
-        blobImg.src = "./assets/images/blob.png";
+        image.style.backgroundImage = "url('./assets/images/blob.png')";
+        image.style.backgroundSize = "13rem";
+        image.style.backgroundRepeat = "no-repeat";
+        image.style.backgroundPosition = "center center";
+
+        // blobImg.src = "./assets/images/blob.png";
     }
-    else{
-        blobImg.src = "";
+    else if(e.target.id == "nope"){
+        image.style.backgroundImage = "none";
+        //blobImg.src = "";
     }
 }
 
-radioOne.addEventListener("change", displayBlobOrNot);
-radioTwo.addEventListener("change", displayBlobOrNot);
+body.addEventListener("change", displayBlobOrNot);
 
 let capture = document.createElement("img");
 capture.src = "./assets/images/camera.png";
 capture.style.width = "3rem";
-capture.style.display = "block";
+capture.style.display = "flex";
+capture.style.flexWrap = "wrap";
+capture.style.rowGap = "1rem";
 capture.style.margin = "10px 0 0 20px";
 capture.style.border = "2px solid #383838";
 capture.style.padding = "10px";
@@ -332,6 +360,7 @@ footer.style.justifyContent = "center"
 footer.style.wordSpacing = '0.5rem';
 footer.style.flexWrap = "wrap";
 footer.style.display = "flex";
+footer.style.rowGap ="1rem";
 footer.style.bottom= "0";
 footer.style.width = "100%";
 footer.style.marginTop = "200px";
@@ -358,3 +387,4 @@ footerEle.forEach((items,index)=>{
     footer.appendChild(a);
 })
 root.append(footer);
+
